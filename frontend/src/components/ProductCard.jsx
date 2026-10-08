@@ -26,26 +26,27 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="card overflow-hidden flex flex-col group">
+    <div className="card product-card overflow-hidden flex flex-col group h-full">
       <Link to={`/products/${product.slug || product._id}`} className="block">
-        <div className="aspect-square bg-gray-100 overflow-hidden">
+        <div className="aspect-square bg-[#f0eee8] overflow-hidden relative">
+          {hasDiscount && <span className="absolute z-10 top-3 left-3 bg-coral text-white text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full">Sale</span>}
           <img
             src={product.images?.[0] || "https://placehold.co/400x400?text=No+Image"}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             loading="lazy"
           />
         </div>
       </Link>
       <div className="p-4 flex flex-col flex-1">
-        <p className="text-xs text-gray-400 uppercase tracking-wide">{product.category}</p>
+        <div className="flex items-center justify-between gap-2"><p className="text-[10px] text-coral uppercase tracking-[0.15em] font-bold">{product.category}</p><span className="text-xs text-gray-500">★ {product.ratingsAverage?.toFixed(1) || "New"}</span></div>
         <Link to={`/products/${product.slug || product._id}`}>
-          <h3 className="font-medium text-gray-900 mt-1 line-clamp-2 hover:text-primary-600">
+          <h3 className="font-semibold text-gray-900 mt-1 line-clamp-2 hover:text-coral">
             {product.name}
           </h3>
         </Link>
         <div className="mt-2 flex items-center gap-2">
-          <span className="font-semibold text-lg">${displayPrice.toFixed(2)}</span>
+          <span className="font-bold text-lg">${displayPrice.toFixed(2)}</span>
           {hasDiscount && (
             <span className="text-sm text-gray-400 line-through">${product.price.toFixed(2)}</span>
           )}

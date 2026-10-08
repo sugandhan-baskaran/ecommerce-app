@@ -2,22 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-50 text-gray-900;
+:root {
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  color: #202124;
+  background: #fbfaf7;
+  font-synthesis: none;
 }
 
+body {
+  @apply bg-[#fbfaf7] antialiased;
+  color: #202124;
+  background-image: radial-gradient(#dedbd2 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+}
+
+h1, h2, h3, h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.025em;
+}
+
+button, a, input, select { transition: all 180ms ease; }
+
+.reveal { animation: reveal 650ms cubic-bezier(.22, 1, .36, 1) both; }
+.reveal-delay-1 { animation-delay: 100ms; }
+.reveal-delay-2 { animation-delay: 180ms; }
+.reveal-delay-3 { animation-delay: 260ms; }
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+}
+
+.hero-product { animation: float 5s ease-in-out infinite; }
+
 .btn-primary {
-  @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  @apply bg-ink hover:bg-coral text-white font-semibold py-2.5 px-4 rounded-full disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
 .btn-secondary {
-  @apply bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-md transition-colors;
+  @apply bg-white border border-gray-200 hover:border-ink text-ink font-semibold py-2.5 px-4 rounded-full;
 }
 
 .input-field {
-  @apply w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  @apply w-full border border-gray-200 bg-white/90 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent;
 }
 
-.card {
-  @apply bg-white rounded-lg shadow-sm border border-gray-200;
-}
+.card { @apply bg-white rounded-2xl shadow-sm border border-[#ebe8e0]; }
+
+.product-card { transition: transform 220ms ease, box-shadow 220ms ease; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 18px 35px rgba(32, 33, 36, .12); }

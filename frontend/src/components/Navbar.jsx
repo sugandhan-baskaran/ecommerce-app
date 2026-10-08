@@ -22,11 +22,11 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
+    <header className="bg-[#fbfaf7]/95 backdrop-blur-md border-b border-[#e5e1d7] sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
-          <Link to="/" className="text-xl font-bold text-primary-700 shrink-0">
-            ShopEase
+          <Link to="/" className="text-2xl font-bold tracking-tight shrink-0">
+            shop<span className="text-coral">ease</span><span className="text-coral">.</span>
           </Link>
 
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-lg">
@@ -38,8 +38,8 @@ const Navbar = () => {
               className="input-field rounded-r-none"
               aria-label="Search products"
             />
-            <button type="submit" className="btn-primary rounded-l-none">
-              Search
+            <button type="submit" className="btn-primary rounded-l-none px-5">
+              ↗
             </button>
           </form>
 
